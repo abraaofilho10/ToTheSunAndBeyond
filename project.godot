@@ -37,8 +37,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=834
-window/size/height=514
+window/size/width=1336
+window/size/height=768
 
 [editor_plugins]
 

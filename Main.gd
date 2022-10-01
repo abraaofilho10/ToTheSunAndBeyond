@@ -14,11 +14,11 @@ func _next_question():
 	if current_question >= total_questions - 1:
 		print("end")
 	else:
-		$HBoxContainer/VBoxContainer/lblQuestion.text = questions.questions[current_question].question
-		$HBoxContainer/VBoxContainer/btnChoice1.text = questions.questions[current_question].answers[0]
-		$HBoxContainer/VBoxContainer/btnChoice2.text = questions.questions[current_question].answers[1]
-		$HBoxContainer/VBoxContainer/btnChoice3.text = questions.questions[current_question].answers[2]
-		$HBoxContainer/VBoxContainer/btnChoice4.text = questions.questions[current_question].answers[3]
+		$lblQuestion.text = questions.questions[current_question].question
+		$btnChoice1_Parent/btnChoice1.text = questions.questions[current_question].answers[0]
+		$btnChoice2_Parent/btnChoice2.text = questions.questions[current_question].answers[1]
+		$btnChoice3_Parent/btnChoice3.text = questions.questions[current_question].answers[2]
+		#$btnChoice4_Parent/btnChoice4.text = questions.questions[current_question].answers[3]
 	
 	
 func _check_answer(p_question: Question, p_answer: int) -> bool:
@@ -41,11 +41,13 @@ func _on_btnChoice1_button_up():
 	else:
 		_show_popup_wrong()
 
+
 func _on_btnChoice2_button_up():
 	if _check_answer(questions.questions[current_question], 1):
 		_show_popup_correct()
 	else:
 		_show_popup_wrong()
+
 
 func _on_btnChoice3_button_up():
 	if _check_answer(questions.questions[current_question], 2):
@@ -53,8 +55,9 @@ func _on_btnChoice3_button_up():
 	else:
 		_show_popup_wrong()
 
-func _on_btnChoice4_button_up():
-	if _check_answer(questions.questions[current_question], 3):
-		_show_popup_correct()
-	else:
-		_show_popup_wrong()
+
+#func _on_btnChoice4_button_up():
+#	if _check_answer(questions.questions[current_question], 3):
+#		_show_popup_correct()
+#	else:
+#		_show_popup_wrong()

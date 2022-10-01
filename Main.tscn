@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Question.gd" type="Script" id=4]
 [ext_resource path="res://PopUpCorrect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://PopUpWrong.tscn" type="PackedScene" id=6]
+[ext_resource path="res://images/btnAnswer.png" type="Texture" id=7]
+[ext_resource path="res://images/panelQuestions.png" type="Texture" id=8]
+[ext_resource path="res://images/interfaceExample.png" type="Texture" id=9]
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 4 )
@@ -41,118 +44,114 @@ correct_answer_index = 1
 script = ExtResource( 3 )
 questions = [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ]
 
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 1366, 768 )
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 questions = SubResource( 2 )
 
+[node name="InterfaceExample" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.290196 )
+position = Vector2( 479, 275 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -43.0
+margin_top = -12.0
+margin_right = -3.0
+margin_bottom = 28.0
+rect_scale = Vector2( 26, 14.3 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="lblQuestion" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 250.0
+margin_top = 165.0
+margin_right = 667.0
+margin_bottom = 195.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Exemplo de pergunta;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+
+[node name="btnChoice1_Parent" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="btnChoice1" type="TextureButton" parent="btnChoice1_Parent"]
+margin_left = 194.0
+margin_top = 102.0
+margin_right = 234.0
+margin_bottom = 142.0
+rect_scale = Vector2( 14.23, 8.637 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblChoice1" type="Label" parent="btnChoice1_Parent"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 265.0
+margin_top = 262.8
+margin_right = 320.0
+margin_bottom = 276.8
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Answer1"
+
+[node name="btnChoice2_Parent" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="btnChoice2" type="TextureButton" parent="btnChoice2_Parent"]
+margin_left = 195.0
+margin_top = 182.0
+margin_right = 235.0
+margin_bottom = 222.0
+rect_scale = Vector2( 14.23, 8.637 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblChoice2" type="Label" parent="btnChoice2_Parent"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 266.0
+margin_top = 342.8
+margin_right = 321.0
+margin_bottom = 356.8
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Answer1"
+
+[node name="btnChoice3_Parent" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="btnChoice3" type="TextureButton" parent="btnChoice3_Parent"]
+margin_left = 195.0
+margin_top = 259.0
+margin_right = 235.0
+margin_bottom = 299.0
+rect_scale = Vector2( 14.23, 8.637 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblChoice3" type="Label" parent="btnChoice3_Parent"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 266.0
+margin_top = 419.8
+margin_right = 321.0
+margin_bottom = 433.8
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Answer1"
+
 [node name="PopUpCorrect" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="PopUpWrong" parent="." instance=ExtResource( 6 )]
 visible = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 48.0
-margin_right = 465.0
-margin_bottom = 514.0
-rect_min_size = Vector2( 278, 514 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 417.0
-margin_bottom = 514.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_right = 417.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="lblQuestion" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 104.0
-margin_right = 417.0
-margin_bottom = 134.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Exemplo de pergunta;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
-
-[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 138.0
-margin_right = 417.0
-margin_bottom = 238.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="btnChoice1" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 242.0
-margin_right = 417.0
-margin_bottom = 272.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Answer1"
-
-[node name="Control3" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 276.0
-margin_right = 417.0
-margin_bottom = 307.0
-rect_min_size = Vector2( 0, 10 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="btnChoice2" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 311.0
-margin_right = 417.0
-margin_bottom = 341.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Answer2"
-
-[node name="Control4" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 345.0
-margin_right = 417.0
-margin_bottom = 376.0
-rect_min_size = Vector2( 0, 10 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="btnChoice3" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 380.0
-margin_right = 417.0
-margin_bottom = 410.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Answer3"
-
-[node name="Control5" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 414.0
-margin_right = 417.0
-margin_bottom = 445.0
-rect_min_size = Vector2( 0, 10 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="btnChoice4" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 449.0
-margin_right = 417.0
-margin_bottom = 479.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Answer4"
-
-[node name="Control6" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 483.0
-margin_right = 417.0
-margin_bottom = 514.0
-rect_min_size = Vector2( 0, 10 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Sun" type="Sprite" parent="."]
 position = Vector2( 731, 53 )
@@ -170,7 +169,6 @@ texture = ExtResource( 1 )
 position = Vector2( 731, 53 )
 texture = ExtResource( 1 )
 
-[connection signal="button_up" from="HBoxContainer/VBoxContainer/btnChoice1" to="." method="_on_btnChoice1_button_up"]
-[connection signal="button_up" from="HBoxContainer/VBoxContainer/btnChoice2" to="." method="_on_btnChoice2_button_up"]
-[connection signal="button_up" from="HBoxContainer/VBoxContainer/btnChoice3" to="." method="_on_btnChoice3_button_up"]
-[connection signal="button_up" from="HBoxContainer/VBoxContainer/btnChoice4" to="." method="_on_btnChoice4_button_up"]
+[connection signal="button_up" from="btnChoice1_Parent/btnChoice1" to="." method="_on_btnChoice1_button_up"]
+[connection signal="button_up" from="btnChoice2_Parent/btnChoice2" to="." method="_on_btnChoice2_button_up"]
+[connection signal="button_up" from="btnChoice3_Parent/btnChoice3" to="." method="_on_btnChoice3_button_up"]
