@@ -1,0 +1,57 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Resource",
+"class": "CustomResource",
+"language": "GDScript",
+"path": "res://demo/res.gd"
+}, {
+"base": "Resource",
+"class": "Question",
+"language": "GDScript",
+"path": "res://Question.gd"
+}, {
+"base": "Resource",
+"class": "QuestionCollection",
+"language": "GDScript",
+"path": "res://QuestionCollection.gd"
+} ]
+_global_script_class_icons={
+"CustomResource": "",
+"Question": "",
+"QuestionCollection": ""
+}
+
+[application]
+
+config/name="To The Sun And Beyond"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=834
+window/size/height=514
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/imrp/plugin.cfg" )
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
