@@ -2,12 +2,12 @@ extends Control
 
 export var questions: Resource
 
-var current_question: int
+var current_question: int = 0
 onready var total_questions: int = questions.questions.size()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print(str(total_questions))
 
 func _next_question():
 	current_question += 1
@@ -27,17 +27,34 @@ func _check_answer(p_question: Question, p_answer: int) -> bool:
 	return false
 
 
-func _on_btnChoice1_button_up():
-	_check_answer(questions.questions[current_question], 0)
+func _show_popup_correct():
+	$PopUpCorrect.visible = true
 
+
+func _show_popup_wrong():
+	$PopUpWrong.visible = true
+
+
+func _on_btnChoice1_button_up():
+	if _check_answer(questions.questions[current_question], 0):
+		_show_popup_correct()
+	else:
+		_show_popup_wrong()
 
 func _on_btnChoice2_button_up():
-	_check_answer(questions.questions[current_question], 1)
-
+	if _check_answer(questions.questions[current_question], 1):
+		_show_popup_correct()
+	else:
+		_show_popup_wrong()
 
 func _on_btnChoice3_button_up():
-	_check_answer(questions.questions[current_question], 2)
-
+	if _check_answer(questions.questions[current_question], 2):
+		_show_popup_correct()
+	else:
+		_show_popup_wrong()
 
 func _on_btnChoice4_button_up():
-	_check_answer(questions.questions[current_question], 3)
+	if _check_answer(questions.questions[current_question], 3):
+		_show_popup_correct()
+	else:
+		_show_popup_wrong()

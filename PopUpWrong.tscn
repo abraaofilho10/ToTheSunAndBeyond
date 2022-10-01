@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="PopUpWrong" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 515.0
+margin_bottom = 394.0
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 227.0
+margin_top = 183.0
+margin_right = 278.0
+margin_bottom = 197.0
+rect_scale = Vector2( 2.5, 2.1875 )
+text = "Errado"
