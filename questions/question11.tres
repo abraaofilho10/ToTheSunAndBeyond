@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "How long was the Parker Solar Probe in orbit around the sun?"
+answers = [ "a) 5 days.", "b) 5 hours.", "c) 5 months." ]
+correct_answer_index = 1

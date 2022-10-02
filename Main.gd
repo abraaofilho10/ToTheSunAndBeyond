@@ -3,15 +3,25 @@ extends Control
 export var question_collection: Resource
 
 var current_question: int = 0
+var answered_questions: int = 0
 onready var total_questions: int = question_collection.questions.size()
+onready var _rnd := RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(str(total_questions))
+	_rnd.randomize()
+	_choose_random_question()
+	
+
+func _choose_random_question() -> int:
+	return _rnd.randi_range(0, question_collection.questions.size() - 1)
+
 
 func _next_question():
-	current_question += 1
-	if current_question >= total_questions - 1:
+	answered_questions += 1
+	current_question = _choose_random_question()
+	if answered_questions >= question_collection.questions.size() - 1:
 		print("end")
 	else:
 		$lblQuestion.text = question_collection.questions[current_question].question

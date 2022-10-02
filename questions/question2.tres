@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
+question = "How was the Parker probe important to science?"
+answers = [ "a) With it it was possible to touch the upper atmosphere of the sun, and thus study what it is made of and how it was formed and evolved.", "b) With it it was possible to touch the core of the sun and observe what it is made of.", "c) With it we can help the corona probe to reach the Sun." ]
 correct_answer_index = 0

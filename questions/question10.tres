@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "What is the sun composed of?"
+answers = [ "a) Like average terrestrial rain or snow, space weather in our solar system is composed of radiation and particles from the Sun.", "b) The Sun is composed of super hot electrically charged plasma, the fourth state of matter.", "c) If we consider the mass fraction that each chemical element contributes to make up the Sun, we will have 60.5% hydrogen, 20.7% helium, 0.84% ​​oxygen, 0.5% carbon, 0.19% iron to even smaller fractions for all the other elements." ]
+correct_answer_index = 1

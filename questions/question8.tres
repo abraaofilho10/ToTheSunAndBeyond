@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "Why doesn't the Parker Solar Probe melt?"
+answers = [ "a) It is constructed with a water-based shield.", "b) A 4.5-inch thick carbon composite shield designed to withstand temperatures approaching 1371°C (2500°F).", "c) The probe has an artificial intelligence system that emits a range of heat similar to the sun." ]
+correct_answer_index = 1

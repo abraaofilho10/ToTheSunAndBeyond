@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "In what year was Parker Solar Probe launched and what is its purpose?"
+answers = [ "a) Parker Solar Probe was launched in 2017 with the aim of photographing the far side of the Moon.", "b) Parker Solar Probe was launched in 2018 to explore the mysteries of the Sun.", "c) Parker Solar Probe was launched in 2019 with the mission to safely orbit the Earth with animals, the dogs Belka and Strelka." ]
+correct_answer_index = 1

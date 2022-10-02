@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
+question = "What is the maximum speed of the Parker Solar Probe?"
+answers = [ "a) 692,000 km/h.", "b) 695,000 km/h.", "c) 690,000 km/h." ]
 correct_answer_index = 0

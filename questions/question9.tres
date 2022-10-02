@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "What are the five strange things that happen in outer space?"
+answers = [ "a) Plasma, Extreme Temperatures, Cosmic Alchemy, Meteor Shower and Supersonic Shocks.", "b) Magnetic Explosions, Space Dust, Plasma, Extreme Temperatures and Meteor Shower.", "c) Plasma, Extreme Temperatures, Cosmic Alchemy, Magnetic Explosions and Supersonic Shocks." ]
+correct_answer_index = 2

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "How is the name given to the point where the solar atmosphere ends and how it is linked to the solar winds?"
+answers = [ "a) Critical corona surface. The heat and pressure emitted by the sun pushes materials away from this star so much that magnetic fields and gravity can no longer hold them together. Objects that survive passage through the atmosphere become solar winds.", "b) Alfvén critical surface. The rapid movement of the sun through the universe causes winds to form on its surface, which are known as solar winds.", "c) Alfvén critical surface. The heat and pressure emitted by the sun pushes materials away from this star so much that magnetic fields and gravity can no longer hold them together. Materials that survive passage through the atmosphere become solar winds." ]
+correct_answer_index = 2

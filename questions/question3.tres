@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "What is the sun's upper atmosphere called?"
+answers = [ "a) Apollo.", "b) Corona.", "c) Solmosphere." ]
+correct_answer_index = 1

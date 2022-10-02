@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "Parker Solar Probe has revealed 4 surprising facts about the sun, what are they?"
+answers = [ "a) Tornadoes, Earthquakes, Solar Tsunamis and Solar Winds.", "b) Solar Winds, Magnetic Fields, Cosmic Dust and Solar Eruptions.", "c) Solar Tsunamis, Magnetic Fields and Tornadoes." ]
+correct_answer_index = 1

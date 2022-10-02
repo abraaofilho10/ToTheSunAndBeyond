@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "What do you need to consider to launch the probe into space and towards the sun?"
+answers = [ "a) The speed that the object will need to move in space to overcome Earth's gravity, the protection of the cockpit of the pilots who need to survive extremely high temperatures, and the amount of food for the pilots during the trip.", "b) The amount of thrusters needed to overcome the Earth's gravity, the speed that the object will need to move in space and the best time to make the trip, because objects move in space so everything needs to be very well calculated to arrive at the same place at the same time. ", "c) The protection of pilots who need to survive extremely high temperatures, the amount of thrusters needed to overcome Earth's gravity, the orbit of the Earth and the Sun." ]
+correct_answer_index = 2

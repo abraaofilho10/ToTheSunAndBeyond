@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "Where does the sun's energy come from and why does the sun shine?"
+answers = [ "a) The energy comes from outer space itself and shines as it reflects light from other stars.", "b) The energy comes from a process known as fusion that happens when the Sun combines tiny particles called protons and neutrons and shines because of its dense layer of mass.", "c) The energy comes from meteors that when they collide with the sun, it transforms the beat into energy and that's why it shines." ]
+correct_answer_index = 1

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "A major NASA milestone was announced December 14 at a press conference at the 2021 American Geophysical Union Fall Meeting in New Orleans. What was the milestone?"
+answers = [ "a) The moon landing, which allowed scientists to understand how it was formed.", "b) First satellite in polar orbit.", "c) First spacecraft that touched the Sun." ]
+correct_answer_index = 2

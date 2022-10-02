@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-question = ""
-answers = [ "", "", "" ]
-correct_answer_index = 0
+question = "What is the name of the first man-made object capable of touching the Sun's atmosphere?"
+answers = [ "a) Solar Probe.", "b) Parker Solar Probe.", "c) Corona Solar Probe." ]
+correct_answer_index = 1
