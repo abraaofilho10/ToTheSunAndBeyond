@@ -1,6 +1,10 @@
 extends Control
 
 export var question_collection: Resource
+export var texture_correct: Texture
+export var texture_wrong: Texture
+export var texture_normal: Texture
+export var time_to_show_pop_up: float = 3.0
 
 var current_question: int = 0
 var answered_questions: int = 0
@@ -11,12 +15,22 @@ onready var _rnd := RandomNumberGenerator.new()
 func _ready():
 	print(str(total_questions))
 	_rnd.randomize()
-	_choose_random_question()
+	current_question = _choose_random_question()
+	_update_question_controls(question_collection.questions[current_question])
 	
 
 func _choose_random_question() -> int:
 	return _rnd.randi_range(0, question_collection.questions.size() - 1)
 
+
+func _update_question_controls(p_question: Question) -> void:
+	$lblQuestion.text = p_question.question
+	$lblChoice1.text = p_question.answers[0]
+	$lblChoice2.text = p_question.answers[1]
+	$lblChoice3.text = p_question.answers[2]
+	$btnChoice1.texture_normal = texture_normal
+	$btnChoice2.texture_normal = texture_normal
+	$btnChoice3.texture_normal = texture_normal
 
 func _next_question():
 	answered_questions += 1
@@ -24,12 +38,8 @@ func _next_question():
 	if answered_questions >= question_collection.questions.size() - 1:
 		print("end")
 	else:
-		$lblQuestion.text = question_collection.questions[current_question].question
-		$btnChoice1_Parent/btnChoice1.text = question_collection.questions[current_question].answers[0]
-		$btnChoice2_Parent/btnChoice2.text = question_collection.questions[current_question].answers[1]
-		$btnChoice3_Parent/btnChoice3.text = question_collection.questions[current_question].answers[2]
-		#$btnChoice4_Parent/btnChoice4.text = question_collection.questions[current_question].answers[3]
-	
+		_update_question_controls(question_collection.questions[current_question])
+		
 	
 func _check_answer(p_question: Question, p_answer: int) -> bool:
 	if p_question.correct_answer_index == p_answer:
@@ -37,37 +47,75 @@ func _check_answer(p_question: Question, p_answer: int) -> bool:
 	return false
 
 
-func _show_popup_correct():
+func _correct_answer(p_correct: int) -> void:
+	_show_correct_answer(p_correct)
+	yield(get_tree().create_timer(time_to_show_pop_up), "timeout")
+	_show_popup_correct()
+
+
+func _wrong_answer(p_wrong: int, p_correct: int) -> void:
+	_show_correct_answer(p_correct)
+	_show_wrong_answer(p_wrong)
+	yield(get_tree().create_timer(time_to_show_pop_up), "timeout")
+	_show_popup_wrong()
+
+
+func _show_correct_answer(p_correct: int) -> void:
+	if p_correct == 0:
+		$btnChoice1.texture_normal = texture_correct
+	elif p_correct == 1:
+		$btnChoice2.texture_normal = texture_correct
+	elif p_correct == 2:
+		$btnChoice3.texture_normal = texture_correct
+	
+
+func _show_wrong_answer(p_wrong: int) -> void:
+	if p_wrong == 0:
+		$btnChoice1.texture_normal = texture_wrong
+	elif p_wrong == 1:
+		$btnChoice2.texture_normal = texture_wrong
+	elif p_wrong == 2:
+		$btnChoice3.texture_normal = texture_wrong
+
+
+func _show_popup_correct() -> void:
 	$PopUpCorrect.visible = true
 
 
-func _show_popup_wrong():
+func _show_popup_wrong() -> void:
 	$PopUpWrong.visible = true
 
 
 func _on_btnChoice1_button_up():
-	if _check_answer(question_collection.questions[current_question], 0):
-		_show_popup_correct()
+	var question: Question = question_collection.questions[current_question]
+	if _check_answer(question, 0):
+		_correct_answer(0)
 	else:
-		_show_popup_wrong()
+		_wrong_answer(0, question.correct_answer_index)
 
 
 func _on_btnChoice2_button_up():
-	if _check_answer(question_collection.questions[current_question], 1):
-		_show_popup_correct()
+	var question: Question = question_collection.questions[current_question]
+	if _check_answer(question, 1):
+		_correct_answer(1)
 	else:
-		_show_popup_wrong()
+		_wrong_answer(1, question.correct_answer_index)
 
 
 func _on_btnChoice3_button_up():
-	if _check_answer(question_collection.questions[current_question], 2):
-		_show_popup_correct()
+	var question: Question = question_collection.questions[current_question]
+	if _check_answer(question, 2):
+		_correct_answer(2)
 	else:
-		_show_popup_wrong()
+		_wrong_answer(2, question.correct_answer_index)
 
 
-#func _on_btnChoice4_button_up():
-#	if _check_answer(question_collection.questions[current_question], 3):
-#		_show_popup_correct()
-#	else:
-#		_show_popup_wrong()
+
+func _on_btnExitWrong_button_up():
+	$PopUpWrong.visible = false
+	_next_question()
+
+
+func _on_btnExitCorrect_button_up():
+	$PopUpCorrect.visible = false
+	_next_question()
