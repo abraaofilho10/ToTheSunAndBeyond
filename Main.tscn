@@ -270,6 +270,7 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="StartScreen" type="TextureRect" parent="."]
+visible = false
 margin_right = 1366.0
 margin_bottom = 768.0
 rect_scale = Vector2( 0.977703, 0.999906 )

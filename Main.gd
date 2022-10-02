@@ -5,8 +5,8 @@ export var texture_correct: Texture
 export var texture_wrong: Texture
 export var texture_normal: Texture
 export var time_to_show_pop_up: float = 3.0
-export var probe_min_y_position: float = 577.5
-export var probe_max_y_position: float = 70.833
+export var probe_min_y_position: float = 676.32
+export var probe_max_y_position: float = 101
 export var probe_y_size: float = 80.0
 export var blinking_time: float = 0.3
 export var waiting_time_to_show_answer: float = 1.2
@@ -32,6 +32,9 @@ func _ready():
 		not_used_questions.append(i)
 	
 	_rnd.randomize()
+	_update_probe_position()
+	_update_question_controls(question_collection.questions[current_question])
+	
 	
 
 func _choose_random_question() -> int:
@@ -70,17 +73,17 @@ func _check_answer(p_question: Question, p_answer: int) -> bool:
 
 
 func _correct_answer(p_correct: int) -> void:
-	#yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
+	yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
 	_show_correct_answer(p_correct)
-	#yield(self, "button_animation_completed")
+	yield(self, "button_animation_completed")
 	_show_popup_correct()
 
 
 func _wrong_answer(p_wrong: int, p_correct: int) -> void:
-	#yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
+	yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
 	_show_wrong_answer(p_wrong)
 	_show_correct_answer(p_correct)
-	#yield(self, "button_animation_completed")
+	yield(self, "button_animation_completed")
 	_show_popup_wrong()
 
 
@@ -90,10 +93,10 @@ func _show_correct_answer(p_correct: int) -> void:
 		for i in range(0, 10):
 			if show:
 				$btnChoice1.texture_normal = texture_correct
-				return
+				
 			else:
 				$btnChoice1.texture_normal = texture_normal
-				return
+				
 			yield(get_tree().create_timer(blinking_time), "timeout")
 			show = not show
 			
@@ -101,10 +104,10 @@ func _show_correct_answer(p_correct: int) -> void:
 		for i in range(0, 10):
 			if show:
 				$btnChoice2.texture_normal = texture_correct
-				return
+				
 			else:
 				$btnChoice2.texture_normal = texture_normal
-				return
+				
 			yield(get_tree().create_timer(blinking_time), "timeout")
 			show = not show
 				
@@ -112,10 +115,10 @@ func _show_correct_answer(p_correct: int) -> void:
 		for i in range(0, 10):
 			if show:
 				$btnChoice3.texture_normal = texture_correct
-				return
+				
 			else:
 				$btnChoice3.texture_normal = texture_normal
-				return
+				
 			yield(get_tree().create_timer(blinking_time), "timeout")
 			show = not show
 	
@@ -202,6 +205,7 @@ func _next_game_step() -> void:
 		
 		match next_s.my_type:
 			MySceneCollection.ESceneType.START_SCENE:
+				$StartScreen.visible = false
 				
 				$TextureRect.visible = false
 				$lblQuestion.visible = false
