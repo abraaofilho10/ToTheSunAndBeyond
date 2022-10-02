@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://images/probe.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -75,24 +75,30 @@ controls_to_show_or_hide = [  ]
 script = ExtResource( 28 )
 my_type = 2
 history_content = "To a better visualization, see the video clicking here:[url]https://www.youtube.com/watch?v=cMNQeCWT09A[/url]"
-controls_to_show_or_hide = [  ]
+controls_to_show_or_hide = [ NodePath("btnPrevious"), NodePath("lblPrevious") ]
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 28 )
-my_type = 0
-history_content = ""
-controls_to_show_or_hide = [  ]
+my_type = 2
+history_content = "[fill]But even doing all the calculations necessary to understand the best moment to launch the probe, the correct acceleration it needed to achieve to enter the correct orbit and how much it needs to decelerate to adjust its trajectory and go towards the sun, it was still necessary to invent a probe capable of achieving this acceleration. That's because, before Parker, no other probe had been able to achieve this acceleration.So, it was necessary to make the probe very small, the size of a car, approximately, weighing 685 lb. In addition, it was necessary to use a large rocket to launch it into space. By achieving these requirements, Parker became the fastest probe ever made by mankind.But still a third challenge needed to be overcome by scientists: When the probe was close to the sun, the only way to communicate with Earth would be through a satellite signal, and any signal it sent to Earth would take around 8 minutes to reach us, so if any problems occurred, we wouldn't know until it was too late.Thus, it was necessary to develop a system that would allow the probe to function autonomously, so that it could remain protected and on its way to the sun. Several sensors have been added to the shadow edge of the heat shield on the probe's body, and if any of them detect sunlight, it automatically informs the spacecraft's central computer so it can correct its position, keeping its instruments protected.Having solved all the technical and technological problems, the spacecraft, planned in the early 2000s, went through several adjustments until it was finally launched in 2018.On the way to the sun, Parker braved Earth's upper atmosphere with the hottest (4,500° F) and coldest (-120° F) temperatures, 50 tons of incoming meteors, and air that is literally electric.You can continue to assist the probe on its journey by answering the quiz. This way, you can learn about the discoveries it has made along the way, and learn more about its mission that continues today.[/fill]"
+controls_to_show_or_hide = [ NodePath("btnPrevious"), NodePath("lblPrevious") ]
 
 [sub_resource type="Resource" id=24]
 script = ExtResource( 28 )
-my_type = 0
+my_type = 1
 history_content = ""
 controls_to_show_or_hide = [  ]
 
 [sub_resource type="Resource" id=25]
 script = ExtResource( 28 )
-my_type = 0
-history_content = ""
+my_type = 2
+history_content = "[fill]In 2021, three years after its launch in 2018, the Parker spacecraft finally reached its destination, and what was previously only possible to be studied from a distance, became closer with the arrival of the spacecraft in the sun's corona.In his photographs it was still possible to observe Mars, Venus and even Earth.According to NASA, in seven years of mission the spacecraft will pass seven times by Venus. In one such flyby, Parker sent Earth a spectacular photo of the planet, showing more than it technically could capture: during the probe's flyby of the neighboring planet on June 11, 2019, the probe clearly captured the bright outline of the “night side” of the planet, known as nightglow. The surprise, however, was in the center of the image, where it is possible to distinguish a darkened spot: Aphrodite Terra, the larger of the two main elevated regions of Venus (its size is equivalent to that of South America), with mountain ranges and cut by numerous and extensive lava flows. The mystery is that, theoretically, Parker couldn't see it.Another contribution made by the Parker spacecraft was related to the shape and location of the critical surface of Alfvén, a surface that marks the end of the sun's upper atmosphere, known as the corona, and the beginning of the solar winds: Until then, scientists believed that this region was located between 4.3 and 8.6 million miles from the solar surface. On April 28, 2021, the spacecraft encountered magnetic and particle conditions that informed scientists that it had entered the surface of Alfvén, at a distance of 8.1 million miles from the surface of the Sun.Also, during the flyby, Parker Solar Probe entered and exited the corona several times. This proved what some scientists had predicted—that Alfvén's critical surface is not in the shape of a smooth ball. Instead, it has peaks and valleys that pucker the surface.By surviving contact with the critical surface of Alfvén, the Parker Probe broke yet another record: the only one to cross that surface. It was this feat that earned him the title of “the probe that touched the sun”. Still in orbit until 2025, Parker Solar Probe is designed to withstand extreme heat and solar radiation and will soon bring us more information about our Sun. The closest  point to the sun it will reach is predicted to be 3.83 million miles from the solar surface. Keep following the news from the scientific community to learn more about other discoveries already made and yet to be made by Parker Solar Probe.[/fill]"
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 28 )
+my_type = 4
+history_content = "Congratulations!With you help, the Parker Solar Probe was able to reach the Sun and bring mankind even further than before.We hope that you have enjoyed this journey and to see you in other scientific adventures! "
 controls_to_show_or_hide = [  ]
 
 [sub_resource type="DynamicFont" id=12]
@@ -129,7 +135,7 @@ texture_correct = ExtResource( 25 )
 texture_wrong = ExtResource( 26 )
 texture_normal = ExtResource( 7 )
 time_to_show_pop_up = 2.0
-scenes = [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ]
+scenes = [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
