@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://images/popUp.png" type="Texture" id=1]
+[ext_resource path="res://Video.gd" type="Script" id=2]
+[ext_resource path="res://videos/parker_solar_probe.ogv" type="VideoStream" id=3]
+[ext_resource path="res://images/btnPlay.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.427451, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+[sub_resource type="Theme" id=8]
+VScrollBar/styles/grabber = SubResource( 3 )
+VScrollBar/styles/grabber_highlight = SubResource( 4 )
+VScrollBar/styles/grabber_pressed = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 6 )
+VScrollBar/styles/scroll_focus = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/DroidSans.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+
+[node name="Video" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 234.0, 639.0, 447.0 ]
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.427451, 1, 1 )
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 285.0
+margin_top = 56.0
+margin_right = 1055.0
+margin_bottom = 696.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 308.0
+margin_top = 86.0
+margin_right = 1028.0
+margin_bottom = 182.0
+theme = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "To a better visualization, see the video clicking here:
+
+[url]https://www.youtube.com/watch?v=cMNQeCWT09A[/url]
+"
+text = "To a better visualization, see the video clicking here:
+
+https://www.youtube.com/watch?v=cMNQeCWT09A
+"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 308.0
+margin_top = 201.0
+margin_right = -308.0
+margin_bottom = -97.0
+ratio = 1.7778
+
+[node name="VideoPlayer" type="VideoPlayer" parent="AspectRatioContainer"]
+margin_top = 32.5025
+margin_right = 720.0
+margin_bottom = 437.497
+stream = ExtResource( 3 )
+
+[node name="btnPause" type="Button" parent="AspectRatioContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 32.5025
+margin_right = 720.0
+margin_bottom = 437.497
+
+[node name="btnPlay" type="TextureButton" parent="."]
+margin_left = 586.0
+margin_top = 376.0
+margin_right = 731.0
+margin_bottom = 466.0
+texture_normal = ExtResource( 4 )
+
+[connection signal="meta_clicked" from="RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="finished" from="AspectRatioContainer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="button_up" from="AspectRatioContainer/btnPause" to="." method="_on_btnPause_button_up"]
+[connection signal="button_up" from="btnPlay" to="." method="_on_Button_button_up"]

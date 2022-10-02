@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://images/probe.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -27,10 +27,89 @@
 [ext_resource path="res://images/btnCorrect.png" type="Texture" id=25]
 [ext_resource path="res://images/btnWrong.png" type="Texture" id=26]
 [ext_resource path="res://History.tscn" type="PackedScene" id=27]
+[ext_resource path="res://ScenesCollection.gd" type="Script" id=28]
+[ext_resource path="res://images/start.png" type="Texture" id=29]
+[ext_resource path="res://Video.tscn" type="PackedScene" id=30]
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=15]
 script = ExtResource( 3 )
 questions = [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 21 ) ]
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 28 )
+my_type = 0
+history_content = ""
+controls_to_show_or_hide = [ NodePath("StartScreen"), NodePath("btnNext"), NodePath("lblNext") ]
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 28 )
+my_type = 2
+history_content = "[fill]On July 20, 1969, Neil Armstrong set foot on the moon, taking humanity further than ever before. “One small step for man, but one giant step for humanity”, said the astronaut as he stepped for the lunar surface. To go to the moon, one had to travel a distance of 238,855 miles. Now imagine traveling a distance of 80.98 million miles to a place with a temperature greater than one million degrees Fahrenheit?No human made such a trip, but the Parker Solar Probe, made by NASA, accomplished this feat and thus managed to “touch” the sun!The Parker Solar Probe - name given after Dr. Eugene Parker, who in 1958 speculated about the existence of a phenomenon nowadays known as solar wind  - after a three years trip, was able to give us important information relevant to solar science, including about the influence of the sun on the planet Earth. In Quiz: On The Way to the Sun, you will understand the whole story that runs through our character, the challenges and discoveries, and you, like Parker Solar Probe, will be able to unravel the mysteries of the game. There are more than 10 interactive questions that will take you to space. Answer correctly and help the probe reach the sun. Prepared?![/fill]"
+controls_to_show_or_hide = [ NodePath("History"), NodePath("btnNext"), NodePath("lblNext") ]
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 28 )
+my_type = 1
+history_content = ""
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 28 )
+my_type = 2
+history_content = "[fill]Some mysteries about the sun could only be answered if we could get close to it, close enough to collect particles from its atmosphere. One of these mysteries is a bizarre phenomenon that occurs in the sun’s atmosphere: the further away from the solar surface, the hotter its atmosphere gets! If I were to compare it, it would be like walking away from fire and feeling the heat increase.To try to answer the mysteries, in 2018, NASA organized the Parker Solar Probe mission, aiming to touch the sun.But how to make something capable of withstanding the high temperature of the sun  without melting? That was the first challenge that scientists had to solve.To understand the scientists' insight, we must first understand the difference between temperature and heat. It may seem strange, but high temperatures don't necessarily correspond to great heating in an object.The difference is that temperature measures how fast particles are moving, while heat corresponds to how much energy they transfer. In space, particles move fast, so there are high temperatures, but there are few, so they don't transfer much energy.So while the temperature of the corona, which is the sun's upper atmosphere, is over a million degrees Fahrenheit, in reality, the Parker spacecraft only needed to withstand a heat of around 2,500 degrees Fahrenheit. Still, this temperature is higher than that of lava from a volcanic eruption, so it was necessary to develop a shield to protect the probe from the sun.This shield, known as the Thermal Protection System (TPS), is made of carbon compounds with a white ceramic paint capable of reflecting some of the sunlight.By placing this shield between the sun and the probe, the back of the probe is able to maintain a temperature around 86 degrees Fahrenheit, so the probe's devices can work without great difficulties in the solar environment.However, this was not the only challenge the mission had to overcome.Continue supporting the probe on its mission by taking quizzes to learn more about what the probe has overcome and what it has discovered on its journey.[/fill]"
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 28 )
+my_type = 1
+history_content = ""
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 28 )
+my_type = 2
+history_content = "[fill]Scientists had found (we hope!) a way to protect the probe from the heat of the sun. But launching an object from Earth towards the sun is in itself quite a challenge. Because of the speed at which the Earth moves in its orbit, launching the probe towards the sun is not as easy as simply launching it upwards. When launching an object off the Earth, towards the sun, it will end up entering its own orbit.So, it is necessary to be able to decelerate the object while it is in orbit so that we can bring it closer to the sun. To do this, the scientists use the gravitational pull of Venus to slow down the probe as the probe and planet approached.[/fill]"
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 28 )
+my_type = 2
+history_content = "To a better visualization, see the video clicking here:[url]https://www.youtube.com/watch?v=cMNQeCWT09A[/url]"
+controls_to_show_or_hide = [ NodePath("btnPrevious"), NodePath("lblPrevious") ]
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 28 )
+my_type = 2
+history_content = "[fill]But even doing all the calculations necessary to understand the best moment to launch the probe, the correct acceleration it needed to achieve to enter the correct orbit and how much it needs to decelerate to adjust its trajectory and go towards the sun, it was still necessary to invent a probe capable of achieving this acceleration. That's because, before Parker, no other probe had been able to achieve this acceleration.So, it was necessary to make the probe very small, the size of a car, approximately, weighing 685 lb. In addition, it was necessary to use a large rocket to launch it into space. By achieving these requirements, Parker became the fastest probe ever made by mankind.But still a third challenge needed to be overcome by scientists: When the probe was close to the sun, the only way to communicate with Earth would be through a satellite signal, and any signal it sent to Earth would take around 8 minutes to reach us, so if any problems occurred, we wouldn't know until it was too late.Thus, it was necessary to develop a system that would allow the probe to function autonomously, so that it could remain protected and on its way to the sun. Several sensors have been added to the shadow edge of the heat shield on the probe's body, and if any of them detect sunlight, it automatically informs the spacecraft's central computer so it can correct its position, keeping its instruments protected.Having solved all the technical and technological problems, the spacecraft, planned in the early 2000s, went through several adjustments until it was finally launched in 2018.On the way to the sun, Parker braved Earth's upper atmosphere with the hottest (4,500° F) and coldest (-120° F) temperatures, 50 tons of incoming meteors, and air that is literally electric.You can continue to assist the probe on its journey by answering the quiz. This way, you can learn about the discoveries it has made along the way, and learn more about its mission that continues today.[/fill]"
+controls_to_show_or_hide = [ NodePath("btnPrevious"), NodePath("lblPrevious") ]
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 28 )
+my_type = 1
+history_content = ""
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 28 )
+my_type = 2
+history_content = "[fill]In 2021, three years after its launch in 2018, the Parker spacecraft finally reached its destination, and what was previously only possible to be studied from a distance, became closer with the arrival of the spacecraft in the sun's corona.In his photographs it was still possible to observe Mars, Venus and even Earth.According to NASA, in seven years of mission the spacecraft will pass seven times by Venus. In one such flyby, Parker sent Earth a spectacular photo of the planet, showing more than it technically could capture: during the probe's flyby of the neighboring planet on June 11, 2019, the probe clearly captured the bright outline of the “night side” of the planet, known as nightglow. The surprise, however, was in the center of the image, where it is possible to distinguish a darkened spot: Aphrodite Terra, the larger of the two main elevated regions of Venus (its size is equivalent to that of South America), with mountain ranges and cut by numerous and extensive lava flows. The mystery is that, theoretically, Parker couldn't see it.Another contribution made by the Parker spacecraft was related to the shape and location of the critical surface of Alfvén, a surface that marks the end of the sun's upper atmosphere, known as the corona, and the beginning of the solar winds: Until then, scientists believed that this region was located between 4.3 and 8.6 million miles from the solar surface. On April 28, 2021, the spacecraft encountered magnetic and particle conditions that informed scientists that it had entered the surface of Alfvén, at a distance of 8.1 million miles from the surface of the Sun.Also, during the flyby, Parker Solar Probe entered and exited the corona several times. This proved what some scientists had predicted—that Alfvén's critical surface is not in the shape of a smooth ball. Instead, it has peaks and valleys that pucker the surface.By surviving contact with the critical surface of Alfvén, the Parker Probe broke yet another record: the only one to cross that surface. It was this feat that earned him the title of “the probe that touched the sun”. Still in orbit until 2025, Parker Solar Probe is designed to withstand extreme heat and solar radiation and will soon bring us more information about our Sun. The closest  point to the sun it will reach is predicted to be 3.83 million miles from the solar surface. Keep following the news from the scientific community to learn more about other discoveries already made and yet to be made by Parker Solar Probe.[/fill]"
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="Resource" id=26]
+script = ExtResource( 28 )
+my_type = 4
+history_content = "Congratulations!With you help, the Parker Solar Probe was able to reach the Sun and bring mankind even further than before.We hope that you have enjoyed this journey and to see you in other scientific adventures! "
+controls_to_show_or_hide = [  ]
+
+[sub_resource type="DynamicFont" id=12]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 24 )
+
+[sub_resource type="DynamicFont" id=11]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 24 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 60
@@ -44,16 +123,6 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 24 )
 
-[sub_resource type="DynamicFont" id=12]
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 24 )
-
-[sub_resource type="DynamicFont" id=11]
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 24 )
-
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,11 +130,12 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_vertical_guides_": [ 1200.0, 139.0 ]
 }
-question_collection = SubResource( 9 )
+question_collection = SubResource( 15 )
 texture_correct = ExtResource( 25 )
 texture_wrong = ExtResource( 26 )
 texture_normal = ExtResource( 7 )
 time_to_show_pop_up = 2.0
+scenes = [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -80,8 +150,133 @@ margin_bottom = 696.0
 texture = ExtResource( 8 )
 expand = true
 
-[node name="btnNext" type="TextureButton" parent="."]
+[node name="lblQuestion" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 350.0
+margin_top = 226.0
+margin_right = 988.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 12 )
+text = "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+autowrap = true
+
+[node name="btnChoice1" type="TextureButton" parent="."]
+margin_left = 349.0
+margin_top = 335.0
+margin_right = 682.0
+margin_bottom = 412.0
+rect_scale = Vector2( 1.92, 1.2 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblChoice1" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 364.833
+margin_top = 356.666
+margin_right = 974.833
+margin_bottom = 421.666
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 11 )
+text = "Answer 1 L ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+autowrap = true
+
+[node name="btnChoice2" type="TextureButton" parent="."]
+margin_left = 349.0
+margin_top = 447.0
+margin_right = 682.0
+margin_bottom = 524.0
+rect_scale = Vector2( 1.92, 1.2 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblChoice2" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 365.833
+margin_top = 464.5
+margin_right = 975.833
+margin_bottom = 529.5
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+text = "Answer 2 L ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+autowrap = true
+
+[node name="btnChoice3" type="TextureButton" parent="."]
+margin_left = 346.0
+margin_top = 561.0
+margin_right = 679.0
+margin_bottom = 638.0
+rect_scale = Vector2( 1.92, 1.2 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblChoice3" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 363.666
+margin_top = 582.167
+margin_right = 973.666
+margin_bottom = 647.167
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+text = "Answer 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+autowrap = true
+
+[node name="PopUpCorrect" parent="." instance=ExtResource( 5 )]
 visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 202.0
+margin_top = 126.0
+margin_right = 202.0
+margin_bottom = 126.0
+rect_scale = Vector2( 0.98, 1.059 )
+
+[node name="PopUpWrong" parent="." instance=ExtResource( 6 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 221.0
+margin_top = 31.0
+margin_right = 221.0
+margin_bottom = 31.0
+rect_scale = Vector2( 0.978, 1.051 )
+
+[node name="History" parent="." instance=ExtResource( 27 )]
+visible = false
+
+[node name="Video" parent="." instance=ExtResource( 30 )]
+visible = false
+
+[node name="Route" type="Sprite" parent="."]
+position = Vector2( 1207, 422.32 )
+scale = Vector2( 0.35, 0.342 )
+texture = ExtResource( 23 )
+
+[node name="ParkerProbe" type="Sprite" parent="."]
+position = Vector2( 1200.5, 676.32 )
+scale = Vector2( 0.45, 0.45 )
+texture = ExtResource( 1 )
+
+[node name="InterfaceExample" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.678431 )
+position = Vector2( -0.833336, -2.5 )
+scale = Vector2( 0.98, 1 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="StartScreen" type="TextureRect" parent="."]
+margin_right = 1366.0
+margin_bottom = 768.0
+rect_scale = Vector2( 0.977703, 0.999906 )
+texture = ExtResource( 29 )
+expand = true
+
+[node name="btnNext" type="TextureButton" parent="."]
 margin_left = 1157.0
 margin_top = 611.0
 margin_right = 1247.0
@@ -90,7 +285,6 @@ texture_normal = ExtResource( 7 )
 expand = true
 
 [node name="lblNext" type="Label" parent="."]
-visible = false
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 1158.0
 margin_top = 612.0
@@ -128,127 +322,14 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="lblQuestion" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 350.0
-margin_top = 226.0
-margin_right = 988.0
-margin_bottom = 326.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 12 )
-text = "Exemplo de pergunta;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
-autowrap = true
-
-[node name="btnChoice1" type="TextureButton" parent="."]
-margin_left = 349.0
-margin_top = 335.0
-margin_right = 682.0
-margin_bottom = 412.0
-rect_scale = Vector2( 1.92, 1.2 )
-texture_normal = ExtResource( 7 )
-expand = true
-
-[node name="lblChoice1" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 364.833
-margin_top = 356.666
-margin_right = 974.833
-margin_bottom = 421.666
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 11 )
-text = "Answer1"
-autowrap = true
-
-[node name="btnChoice2" type="TextureButton" parent="."]
-margin_left = 349.0
-margin_top = 447.0
-margin_right = 682.0
-margin_bottom = 524.0
-rect_scale = Vector2( 1.92, 1.2 )
-texture_normal = ExtResource( 7 )
-expand = true
-
-[node name="lblChoice2" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 365.833
-margin_top = 464.5
-margin_right = 975.833
-margin_bottom = 529.5
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 12 )
-text = "Answer1"
-autowrap = true
-
-[node name="btnChoice3" type="TextureButton" parent="."]
-margin_left = 346.0
-margin_top = 561.0
-margin_right = 679.0
-margin_bottom = 638.0
-rect_scale = Vector2( 1.92, 1.2 )
-texture_normal = ExtResource( 7 )
-expand = true
-
-[node name="lblChoice3" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 363.666
-margin_top = 582.167
-margin_right = 973.666
-margin_bottom = 647.167
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 12 )
-text = "Answer1"
-autowrap = true
-
-[node name="PopUpCorrect" parent="." instance=ExtResource( 5 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 202.0
-margin_top = 126.0
-margin_right = 202.0
-margin_bottom = 126.0
-rect_scale = Vector2( 0.98, 1.059 )
-
-[node name="PopUpWrong" parent="." instance=ExtResource( 6 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 221.0
-margin_top = 31.0
-margin_right = 221.0
-margin_bottom = 31.0
-rect_scale = Vector2( 0.978, 1.051 )
-
-[node name="History" parent="." instance=ExtResource( 27 )]
-visible = false
-
-[node name="Route" type="Sprite" parent="."]
-position = Vector2( 1207, 422.32 )
-scale = Vector2( 0.35, 0.342 )
-texture = ExtResource( 23 )
-
-[node name="ParkerProbe" type="Sprite" parent="."]
-position = Vector2( 1200.5, 676.32 )
-scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 1 )
-
-[node name="InterfaceExample" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.678431 )
-position = Vector2( -0.833336, -2.5 )
-scale = Vector2( 0.98, 1 )
-texture = ExtResource( 9 )
-centered = false
-
 [connection signal="button_up" from="btnChoice1" to="." method="_on_btnChoice1_button_up"]
 [connection signal="button_up" from="btnChoice2" to="." method="_on_btnChoice2_button_up"]
 [connection signal="button_up" from="btnChoice3" to="." method="_on_btnChoice3_button_up"]
 [connection signal="button_up" from="PopUpCorrect/btnExit" to="." method="_on_btnExitCorrect_button_up"]
 [connection signal="button_up" from="PopUpWrong/btnExit" to="." method="_on_btnExitWrong_button_up"]
+[connection signal="button_up" from="btnNext" to="." method="_on_btnNext_button_up"]
+[connection signal="button_up" from="btnPrevious" to="." method="_on_btnPrevious_button_up"]
 
 [editable path="PopUpCorrect"]
 [editable path="PopUpWrong"]
+[editable path="History"]
