@@ -5,27 +5,46 @@ export var texture_correct: Texture
 export var texture_wrong: Texture
 export var texture_normal: Texture
 export var time_to_show_pop_up: float = 3.0
+export var probe_min_y_position: float = 577.5
+export var probe_max_y_position: float = 70.833
+export var probe_y_size: float = 80.0
+export var blinking_time: float = 0.3
+export var waiting_time_to_show_answer: float = 1.2
 
 var current_question: int = 0
 var answered_questions: int = 0
+var not_used_questions := []
+var can_click := true
 onready var total_questions: int = question_collection.questions.size()
 onready var _rnd := RandomNumberGenerator.new()
 
+signal button_animation_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(str(total_questions))
+	var cnt: int = 0
+	for i in range(0, total_questions):
+		not_used_questions.append(i)
+	
 	_rnd.randomize()
 	current_question = _choose_random_question()
 	_update_question_controls(question_collection.questions[current_question])
-	
+	_update_probe_position()
+
 
 func _choose_random_question() -> int:
-	return _rnd.randi_range(0, question_collection.questions.size() - 1)
+	var q := _rnd.randi_range(0, not_used_questions.size() - 1)
+	not_used_questions.remove(q)
+	return q
+
+
+func _update_probe_position() -> void:
+	var probe_y_position: float = (probe_min_y_position + probe_max_y_position - probe_y_size)
+	probe_y_position = probe_y_position - (probe_y_position * answered_questions / total_questions)
+	$ParkerProbe.position.y = probe_y_position
 
 
 func _update_question_controls(p_question: Question) -> void:
-	#$ParkerProbe.position = 
 	$lblQuestion.text = p_question.question
 	$lblChoice1.text = p_question.answers[0]
 	$lblChoice2.text = p_question.answers[1]
@@ -34,15 +53,17 @@ func _update_question_controls(p_question: Question) -> void:
 	$btnChoice2.texture_normal = texture_normal
 	$btnChoice3.texture_normal = texture_normal
 
+
 func _next_question():
 	answered_questions += 1
-	current_question = _choose_random_question()
+	_update_probe_position()
 	if answered_questions >= question_collection.questions.size() - 1:
 		print("end")
 	else:
 		_update_question_controls(question_collection.questions[current_question])
-		
-	
+	current_question = _choose_random_question()
+
+
 func _check_answer(p_question: Question, p_answer: int) -> bool:
 	if p_question.correct_answer_index == p_answer:
 		return true
@@ -50,26 +71,50 @@ func _check_answer(p_question: Question, p_answer: int) -> bool:
 
 
 func _correct_answer(p_correct: int) -> void:
+	yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
 	_show_correct_answer(p_correct)
-	yield(get_tree().create_timer(time_to_show_pop_up), "timeout")
+	yield(self, "button_animation_completed")
 	_show_popup_correct()
 
 
 func _wrong_answer(p_wrong: int, p_correct: int) -> void:
-	_show_correct_answer(p_correct)
+	yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
 	_show_wrong_answer(p_wrong)
-	yield(get_tree().create_timer(time_to_show_pop_up), "timeout")
+	_show_correct_answer(p_correct)
+	yield(self, "button_animation_completed")
 	_show_popup_wrong()
 
 
 func _show_correct_answer(p_correct: int) -> void:
+	var show := true
 	if p_correct == 0:
-		$btnChoice1.texture_normal = texture_correct
+		for i in range(0, 10):
+			if show:
+				$btnChoice1.texture_normal = texture_correct
+			else:
+				$btnChoice1.texture_normal = texture_normal
+			yield(get_tree().create_timer(blinking_time), "timeout")
+			show = not show
+			
 	elif p_correct == 1:
-		$btnChoice2.texture_normal = texture_correct
+		for i in range(0, 10):
+			if show:
+				$btnChoice2.texture_normal = texture_correct
+			else:
+				$btnChoice2.texture_normal = texture_normal
+			yield(get_tree().create_timer(blinking_time), "timeout")
+			show = not show
+				
 	elif p_correct == 2:
-		$btnChoice3.texture_normal = texture_correct
+		for i in range(0, 10):
+			if show:
+				$btnChoice3.texture_normal = texture_correct
+			else:
+				$btnChoice3.texture_normal = texture_normal
+			yield(get_tree().create_timer(blinking_time), "timeout")
+			show = not show
 	
+	emit_signal("button_animation_completed")
 
 func _show_wrong_answer(p_wrong: int) -> void:
 	if p_wrong == 0:
@@ -89,35 +134,39 @@ func _show_popup_wrong() -> void:
 
 
 func _on_btnChoice1_button_up():
-	var question: Question = question_collection.questions[current_question]
-	if _check_answer(question, 0):
-		_correct_answer(0)
-	else:
-		_wrong_answer(0, question.correct_answer_index)
+	if can_click:
+		var question: Question = question_collection.questions[current_question]
+		if _check_answer(question, 0):
+			_correct_answer(0)
+		else:
+			_wrong_answer(0, question.correct_answer_index)
 
 
 func _on_btnChoice2_button_up():
-	var question: Question = question_collection.questions[current_question]
-	if _check_answer(question, 1):
-		_correct_answer(1)
-	else:
-		_wrong_answer(1, question.correct_answer_index)
+	if can_click:
+		var question: Question = question_collection.questions[current_question]
+		if _check_answer(question, 1):
+			_correct_answer(1)
+		else:
+			_wrong_answer(1, question.correct_answer_index)
 
 
 func _on_btnChoice3_button_up():
-	var question: Question = question_collection.questions[current_question]
-	if _check_answer(question, 2):
-		_correct_answer(2)
-	else:
-		_wrong_answer(2, question.correct_answer_index)
-
+	if can_click:
+		var question: Question = question_collection.questions[current_question]
+		if _check_answer(question, 2):
+			_correct_answer(2)
+		else:
+			_wrong_answer(2, question.correct_answer_index)
 
 
 func _on_btnExitWrong_button_up():
+	can_click = true
 	$PopUpWrong.visible = false
 	_next_question()
 
 
 func _on_btnExitCorrect_button_up():
+	can_click = true
 	$PopUpCorrect.visible = false
 	_next_question()

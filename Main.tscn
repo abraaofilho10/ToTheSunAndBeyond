@@ -50,6 +50,7 @@ question_collection = SubResource( 9 )
 texture_correct = ExtResource( 25 )
 texture_wrong = ExtResource( 26 )
 texture_normal = ExtResource( 7 )
+time_to_show_pop_up = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -160,7 +161,7 @@ scale = Vector2( 0.35, 0.342 )
 texture = ExtResource( 23 )
 
 [node name="ParkerProbe" type="Sprite" parent="."]
-position = Vector2( 986.667, 577.5 )
+position = Vector2( 981.667, 577.5 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 1 )
 
