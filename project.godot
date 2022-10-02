@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://demo/res.gd"
 }, {
 "base": "Resource",
+"class": "MySceneCollection",
+"language": "GDScript",
+"path": "res://ScenesCollection.gd"
+}, {
+"base": "Resource",
 "class": "Question",
 "language": "GDScript",
 "path": "res://Question.gd"
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "CustomResource": "",
+"MySceneCollection": "",
 "Question": "",
 "QuestionCollection": ""
 }
