@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://images/panelQuestions.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.427451, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+[sub_resource type="Theme" id=8]
+VScrollBar/styles/grabber = SubResource( 3 )
+VScrollBar/styles/grabber_highlight = SubResource( 4 )
+VScrollBar/styles/grabber_pressed = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 6 )
+VScrollBar/styles/scroll_focus = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/DroidSans.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 1 )
+
+[node name="History" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.427451, 1, 1 )
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 285.0
+margin_top = 56.0
+margin_right = 1055.0
+margin_bottom = 696.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 304.0
+margin_top = 231.0
+margin_right = 1024.0
+margin_bottom = 666.0
+theme = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "História
+
+Em 20 de julho de 1969, Neil Armstrong pisou na lua, levando a humanidade mais longe do que nunca antes. “Um pequeno passo para o homem, mas um passo gigantesco para a humanidade”, pronunciou o astronauta ao pisar na superfície lunar.
+Para ir até a lua, foi preciso percorrer uma distância de 238,855 milhas. Agora, imagine uma viagem a uma distância de 80.98 milhões de milhas, para um lugar com uma temperatura maior que um milhão de graus Fahrenheit?
+Nenhum humano fez tal viagem, mas a sonda Parker, feita pela NASA, realizou esse feito e com isso conseguiu “tocar” o sol!
+A Parker Solar Probe, após uma viagem que durou 3 anos, conseguiu informações importantíssimas para o estudo do sol e sua relação com o nosso planeta. 
+No Quiz: A Caminho do Sol, você perceberá e entender toda a história que perpassa a nossa personagem, os desafios e as descobertas, e você, assim como a Parker Solar Probe, conseguirá desvendar os mistérios do jogo. São mais de 10 perguntas interativas que vão te levar para o espaço. Responda corretamente e ajude a sonda a chegar ao sol. Preparado?!
+"

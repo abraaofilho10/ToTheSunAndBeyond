@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://images/probe.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -26,10 +26,16 @@
 [ext_resource path="res://fonts/default_dynamicfontdata.tres" type="DynamicFontData" id=24]
 [ext_resource path="res://images/btnCorrect.png" type="Texture" id=25]
 [ext_resource path="res://images/btnWrong.png" type="Texture" id=26]
+[ext_resource path="res://History.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 3 )
 questions = [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 21 ) ]
+
+[sub_resource type="DynamicFont" id=13]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 24 )
 
 [sub_resource type="DynamicFont" id=12]
 use_mipmaps = true
@@ -44,8 +50,10 @@ font_data = ExtResource( 24 )
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1200.0, 139.0 ]
+}
 question_collection = SubResource( 9 )
 texture_correct = ExtResource( 25 )
 texture_wrong = ExtResource( 26 )
@@ -58,17 +66,65 @@ anchor_bottom = 1.0
 color = Color( 0, 0.427451, 1, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 145.833
-margin_right = 887.833
-margin_bottom = 606.0
+margin_left = 285.0
+margin_top = 56.0
+margin_right = 1055.0
+margin_bottom = 696.0
 texture = ExtResource( 8 )
+expand = true
+
+[node name="btnNext" type="TextureButton" parent="."]
+visible = false
+margin_left = 1157.0
+margin_top = 611.0
+margin_right = 1247.0
+margin_bottom = 688.0
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblNext" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1193.5
+margin_top = 613.5
+margin_right = 1243.5
+margin_bottom = 653.5
+rect_scale = Vector2( 4, 4 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 13 )
+text = ">"
+autowrap = true
+
+[node name="btnPrevious" type="TextureButton" parent="."]
+visible = false
+margin_left = 90.0
+margin_top = 620.0
+margin_right = 180.0
+margin_bottom = 697.0
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="lblPrevious" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 115.833
+margin_top = 621.667
+margin_right = 165.833
+margin_bottom = 661.667
+rect_scale = Vector2( 4, 4 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 13 )
+text = "<"
+autowrap = true
 
 [node name="lblQuestion" type="Label" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 203.333
-margin_top = 159.167
-margin_right = 818.333
-margin_bottom = 259.167
+margin_left = 350.0
+margin_top = 226.0
+margin_right = 988.0
+margin_bottom = 326.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 12 )
@@ -76,19 +132,20 @@ text = "Exemplo de pergunta;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
 autowrap = true
 
 [node name="btnChoice1" type="TextureButton" parent="."]
-margin_left = 202.5
-margin_top = 259.167
-margin_right = 525.53
-margin_bottom = 336.167
+margin_left = 349.0
+margin_top = 335.0
+margin_right = 682.0
+margin_bottom = 412.0
 rect_scale = Vector2( 1.92, 1.2 )
 texture_normal = ExtResource( 7 )
+expand = true
 
 [node name="lblChoice1" type="Label" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 218.333
-margin_top = 280.833
-margin_right = 823.333
-margin_bottom = 345.833
+margin_left = 364.833
+margin_top = 356.666
+margin_right = 974.833
+margin_bottom = 421.666
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 11 )
@@ -96,19 +153,20 @@ text = "Answer1"
 autowrap = true
 
 [node name="btnChoice2" type="TextureButton" parent="."]
-margin_left = 202.5
-margin_top = 367.5
-margin_right = 525.5
-margin_bottom = 444.5
+margin_left = 349.0
+margin_top = 447.0
+margin_right = 682.0
+margin_bottom = 524.0
 rect_scale = Vector2( 1.92, 1.2 )
 texture_normal = ExtResource( 7 )
+expand = true
 
 [node name="lblChoice2" type="Label" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 219.333
-margin_top = 385.0
-margin_right = 824.333
-margin_bottom = 450.0
+margin_left = 365.833
+margin_top = 464.5
+margin_right = 975.833
+margin_bottom = 529.5
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 12 )
@@ -116,19 +174,20 @@ text = "Answer1"
 autowrap = true
 
 [node name="btnChoice3" type="TextureButton" parent="."]
-margin_left = 201.667
-margin_top = 473.333
-margin_right = 524.667
-margin_bottom = 550.333
+margin_left = 346.0
+margin_top = 561.0
+margin_right = 679.0
+margin_bottom = 638.0
 rect_scale = Vector2( 1.92, 1.2 )
 texture_normal = ExtResource( 7 )
+expand = true
 
 [node name="lblChoice3" type="Label" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 219.333
-margin_top = 494.5
-margin_right = 824.333
-margin_bottom = 559.5
+margin_left = 363.666
+margin_top = 582.167
+margin_right = 973.666
+margin_bottom = 647.167
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 12 )
@@ -155,21 +214,24 @@ margin_right = 55.8333
 margin_bottom = -23.3333
 rect_scale = Vector2( 0.978, 1.051 )
 
+[node name="History" parent="." instance=ExtResource( 27 )]
+visible = false
+
 [node name="Route" type="Sprite" parent="."]
-position = Vector2( 988.167, 323.5 )
+position = Vector2( 1207, 422.32 )
 scale = Vector2( 0.35, 0.342 )
 texture = ExtResource( 23 )
 
 [node name="ParkerProbe" type="Sprite" parent="."]
-position = Vector2( 981.667, 577.5 )
+position = Vector2( 1200.5, 676.32 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 1 )
 
 [node name="InterfaceExample" type="Sprite" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.678431 )
-position = Vector2( -134.167, -60.8333 )
-scale = Vector2( 0.95, 0.95 )
+position = Vector2( -0.833336, -2.5 )
+scale = Vector2( 0.98, 1 )
 texture = ExtResource( 9 )
 centered = false
 
