@@ -138,21 +138,29 @@ autowrap = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-rect_scale = Vector2( 0.75, 0.75 )
+margin_left = 33.3333
+margin_top = 68.3333
+margin_right = 33.3333
+margin_bottom = 68.3333
+rect_scale = Vector2( 0.98, 1.059 )
 
 [node name="PopUpWrong" parent="." instance=ExtResource( 6 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-rect_scale = Vector2( 0.75, 0.75 )
+margin_left = 55.8333
+margin_top = -23.3333
+margin_right = 55.8333
+margin_bottom = -23.3333
+rect_scale = Vector2( 0.978, 1.051 )
 
 [node name="Route" type="Sprite" parent="."]
-position = Vector2( 988.333, 289.167 )
-scale = Vector2( 0.35, 0.35 )
+position = Vector2( 988.167, 323.5 )
+scale = Vector2( 0.35, 0.342 )
 texture = ExtResource( 23 )
 
 [node name="ParkerProbe" type="Sprite" parent="."]
-position = Vector2( 980.833, 521.667 )
+position = Vector2( 986.667, 577.5 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 1 )
 

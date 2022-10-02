@@ -11,6 +11,7 @@ var answered_questions: int = 0
 onready var total_questions: int = question_collection.questions.size()
 onready var _rnd := RandomNumberGenerator.new()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(str(total_questions))
@@ -24,6 +25,7 @@ func _choose_random_question() -> int:
 
 
 func _update_question_controls(p_question: Question) -> void:
+	#$ParkerProbe.position = 
 	$lblQuestion.text = p_question.question
 	$lblChoice1.text = p_question.answers[0]
 	$lblChoice2.text = p_question.answers[1]
