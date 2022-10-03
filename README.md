@@ -19,5 +19,3 @@
 
 ## Specials thanks
 > The Solar Trekker team wish to thank the organizers of the Nasa Space Apps 2022 for helding the event and disponibilizing the resources used in the solution.
-
-[embed]https://drive.google.com/drive/folders/1jNujVFAnisNbdebXxrAepXbnO4nNABPQ[/embed]
