@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://images/probe.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://ScenesCollection.gd" type="Script" id=28]
 [ext_resource path="res://images/start.png" type="Texture" id=29]
 [ext_resource path="res://Video.tscn" type="PackedScene" id=30]
+[ext_resource path="res://EndGame.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 3 )
@@ -98,8 +99,8 @@ controls_to_show_or_hide = [  ]
 [sub_resource type="Resource" id=26]
 script = ExtResource( 28 )
 my_type = 4
-history_content = "Congratulations!With you help, the Parker Solar Probe was able to reach the Sun and bring mankind even further than before.We hope that you have enjoyed this journey and to see you in other scientific adventures! "
-controls_to_show_or_hide = [  ]
+history_content = "Congratulations! With you help, the Parker Solar Probe was able to reach the Sun and bring mankind even further than before. We hope that you have enjoyed this journey and to see you in other scientific adventures!"
+controls_to_show_or_hide = [ NodePath("EndGame") ]
 
 [sub_resource type="DynamicFont" id=12]
 use_mipmaps = true
@@ -235,6 +236,11 @@ margin_right = 202.0
 margin_bottom = 126.0
 rect_scale = Vector2( 0.98, 1.059 )
 
+[node name="btnExit" parent="PopUpCorrect" index="2"]
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="PopUpWrong" parent="." instance=ExtResource( 6 )]
 visible = false
 anchor_right = 0.0
@@ -245,15 +251,23 @@ margin_right = 221.0
 margin_bottom = 31.0
 rect_scale = Vector2( 0.978, 1.051 )
 
+[node name="btnExit" parent="PopUpWrong" index="2"]
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="History" parent="." instance=ExtResource( 27 )]
 visible = false
 
 [node name="Video" parent="." instance=ExtResource( 30 )]
 visible = false
 
+[node name="EndGame" parent="." instance=ExtResource( 31 )]
+visible = false
+
 [node name="Route" type="Sprite" parent="."]
-position = Vector2( 1207, 422.32 )
-scale = Vector2( 0.35, 0.342 )
+position = Vector2( 1207, 393 )
+scale = Vector2( 0.424, 0.424 )
 texture = ExtResource( 23 )
 
 [node name="ParkerProbe" type="Sprite" parent="."]
@@ -278,6 +292,7 @@ texture = ExtResource( 29 )
 expand = true
 
 [node name="btnNext" type="TextureButton" parent="."]
+visible = false
 margin_left = 1157.0
 margin_top = 611.0
 margin_right = 1247.0
@@ -286,6 +301,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 
 [node name="lblNext" type="Label" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 1158.0
 margin_top = 612.0

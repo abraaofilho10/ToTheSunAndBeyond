@@ -31,24 +31,27 @@ func _ready():
 	for i in range(0, total_questions):
 		not_used_questions.append(i)
 	
+	print("not_used_questions = " + str(not_used_questions))
+	
 	_rnd.randomize()
-<<<<<<< HEAD
+	
+	print("ready")
+	print("_update_probe_position")
+	
 	_update_probe_position()
-	_update_question_controls(question_collection.questions[current_question])
 	
-=======
->>>>>>> 1915ceb927fb795605250d4692d2f15ba111270d
-	
+	print("calling _start_current_scene()")
+	_start_current_scene()
+
 
 func _choose_random_question() -> int:
 	var q := _rnd.randi_range(0, not_used_questions.size() - 1)
-	not_used_questions.remove(q)
 	return q
 
 
 func _update_probe_position() -> void:
 	var probe_y_position: float = (probe_min_y_position + probe_max_y_position - probe_y_size)
-	probe_y_position = probe_y_position - (probe_y_position * answered_questions / total_questions)
+	probe_y_position = probe_y_position - (probe_y_position * answered_questions / (total_questions + 1))
 	$ParkerProbe.position.y = probe_y_position
 
 
@@ -64,9 +67,19 @@ func _update_question_controls(p_question: Question) -> void:
 
 func _next_question():
 	answered_questions += 1
+	current_question = _choose_random_question()
+	not_used_questions.erase(current_question)
+	print("current_question" + str(current_question))
+	print("not_used_questions old = " + str(not_used_questions))
+	print("_next_question erase c=" + str(current_question))
+
+
+func _update_question():
+	print("entered next question func. Old question" + str(current_question))
+	print("answered_questions" + str(answered_questions))
+	print("not_used_questions new = " + str(not_used_questions))
 	_update_probe_position()
 	_update_question_controls(question_collection.questions[current_question])
-	current_question = _choose_random_question()
 
 
 func _check_answer(p_question: Question, p_answer: int) -> bool:
@@ -76,73 +89,54 @@ func _check_answer(p_question: Question, p_answer: int) -> bool:
 
 
 func _correct_answer(p_correct: int) -> void:
-	#yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
+	yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
 	_show_correct_answer(p_correct)
-	#yield(self, "button_animation_completed")
+	print("answer correct! Answer = " + str(p_correct))
+	yield(self, "button_animation_completed")
 	_show_popup_correct()
 
 
 func _wrong_answer(p_wrong: int, p_correct: int) -> void:
-	#yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
+	yield(get_tree().create_timer(waiting_time_to_show_answer), "timeout")
 	_show_wrong_answer(p_wrong)
+	print("answer wrong! Answer = " + str(p_wrong)+" the correct was " + str(p_correct))
 	_show_correct_answer(p_correct)
-	#yield(self, "button_animation_completed")
+	yield(self, "button_animation_completed")
 	_show_popup_wrong()
 
 
 func _show_correct_answer(p_correct: int) -> void:
 	var show := true
 	if p_correct == 0:
+		$btnChoice1.texture_normal = texture_correct
+		yield(get_tree().create_timer(0.5), "timeout")
 		for i in range(0, 10):
 			if show:
 				$btnChoice1.texture_normal = texture_correct
-<<<<<<< HEAD
-				
 			else:
 				$btnChoice1.texture_normal = texture_normal
-				
-=======
-				return
-			else:
-				$btnChoice1.texture_normal = texture_normal
-				return
->>>>>>> 1915ceb927fb795605250d4692d2f15ba111270d
 			yield(get_tree().create_timer(blinking_time), "timeout")
 			show = not show
 			
 	elif p_correct == 1:
+		$btnChoice2.texture_normal = texture_correct
+		yield(get_tree().create_timer(0.5), "timeout")
 		for i in range(0, 10):
 			if show:
 				$btnChoice2.texture_normal = texture_correct
-<<<<<<< HEAD
-				
 			else:
 				$btnChoice2.texture_normal = texture_normal
-				
-=======
-				return
-			else:
-				$btnChoice2.texture_normal = texture_normal
-				return
->>>>>>> 1915ceb927fb795605250d4692d2f15ba111270d
 			yield(get_tree().create_timer(blinking_time), "timeout")
 			show = not show
 				
 	elif p_correct == 2:
+		$btnChoice3.texture_normal = texture_correct
+		yield(get_tree().create_timer(0.5), "timeout")
 		for i in range(0, 10):
 			if show:
 				$btnChoice3.texture_normal = texture_correct
-<<<<<<< HEAD
-				
 			else:
 				$btnChoice3.texture_normal = texture_normal
-				
-=======
-				return
-			else:
-				$btnChoice3.texture_normal = texture_normal
-				return
->>>>>>> 1915ceb927fb795605250d4692d2f15ba111270d
 			yield(get_tree().create_timer(blinking_time), "timeout")
 			show = not show
 	
@@ -198,10 +192,14 @@ func _on_btnExitWrong_button_up():
 	$PopUpWrong.visible = false
 	for n in next_step_at_question:
 		if n == answered_questions:
-			answered_questions += 1
+			print("old game step" + str(current_scene))
 			_next_game_step()
+			print("new game step" + str(current_scene))
+			_start_current_scene()
 			return
+	print("calling _next_question")
 	_next_question()
+	_update_question()
 
 
 func _on_btnExitCorrect_button_up():
@@ -209,30 +207,43 @@ func _on_btnExitCorrect_button_up():
 	$PopUpCorrect.visible = false
 	for n in next_step_at_question:
 		if n == answered_questions:
-			answered_questions += 1
+			print("old game step" + str(current_scene))
 			_next_game_step()
+			print("new game step" + str(current_scene))
+			_start_current_scene()
 			return
+	print("calling _next_question")
 	_next_question()
+	_update_question()
 
 
 func _next_game_step() -> void:
-	if current_scene + 1 <= scenes.size():
-		var the_s: MySceneCollection = scenes[current_scene]
+	current_scene += 1
+	
+
+func _hide_previous_scene() -> void:
+	print("_hide_previous_scene")
+	if current_scene - 1 >= 0:
+		var the_s: MySceneCollection = scenes[current_scene - 1]
 		var c_to_hide = the_s.controls_to_show_or_hide
 		for np in c_to_hide:
 			var node = get_node(np)
 			node.visible = false
-			
-		current_scene += 1
+
+	
+func _start_current_scene() -> void:
+	print("entered _start_scene func Current scene" + str(current_scene))
+	if current_scene + 1 <= scenes.size():
+		
+		print("calling _hide_previous_scene")
+		_hide_previous_scene()
 		
 		var next_s: MySceneCollection = scenes[current_scene]
 		
 		match next_s.my_type:
 			MySceneCollection.ESceneType.START_SCENE:
-<<<<<<< HEAD
+				print("entered START_SCENE")
 				$StartScreen.visible = true
-=======
->>>>>>> 1915ceb927fb795605250d4692d2f15ba111270d
 				
 				$TextureRect.visible = false
 				$lblQuestion.visible = false
@@ -244,6 +255,7 @@ func _next_game_step() -> void:
 				$btnChoice3.visible = false
 				
 			MySceneCollection.ESceneType.HISTORY:
+				print("entered HISTORY")
 				$History.visible = true
 				
 				$History.history = next_s.history_content
@@ -262,6 +274,8 @@ func _next_game_step() -> void:
 				
 			MySceneCollection.ESceneType.QUESTION:
 				
+				print("entered QUESTION")
+				
 				$btnNext.visible = false
 				$lblNext.visible = false
 				
@@ -276,14 +290,14 @@ func _next_game_step() -> void:
 				$btnChoice2.visible = true
 				$btnChoice3.visible = true
 				
-				current_question = _choose_random_question()
-				_update_question_controls(question_collection.questions[current_question])
-				_update_probe_position()
+				_next_question()
+				_update_question()
 				
 			MySceneCollection.ESceneType.END_GAME:
-				$History.visible = true
+				print("entered END_GAME")
+				#$History.visible = true
 				
-				$History.history = next_s.history_content
+				#$History.history = next_s.history_content
 				
 				$TextureRect.visible = false
 				$lblQuestion.visible = false
@@ -310,32 +324,36 @@ func _next_game_step() -> void:
 func _on_btnNext_button_up():
 	if can_click:
 		can_click = false
+		print("calling _next_game_step")
 		_next_game_step()
+		_start_current_scene()
 
 
 func _on_btnPrevious_button_up():
 	if can_click:
 		can_click = false
 		
+		print("_on_btnPrevious_button_up")
+		print("current_scene = " + str(current_scene))
 		var the_s: MySceneCollection = scenes[current_scene]
 		var c_to_hide = the_s.controls_to_show_or_hide
 		for np in c_to_hide:
 			var node = get_node(np)
 			node.visible = false
 		
-		var next_s: MySceneCollection = scenes[current_scene]
-			
-		match next_s.my_type:
+		var previous_s: MySceneCollection = scenes[current_scene - 1]
+		
+		match previous_s.my_type:
 			MySceneCollection.ESceneType.START_SCENE:
 				pass
 			MySceneCollection.ESceneType.HISTORY:
-				$History.history = next_s.history_content
+				$History.history = previous_s.history_content
 			MySceneCollection.ESceneType.QUESTION:
 				pass
 			MySceneCollection.ESceneType.END_GAME:
 				pass
 				
-		var c_to_show = the_s.controls_to_show_or_hide
+		var c_to_show = previous_s.controls_to_show_or_hide
 		for np in c_to_show:
 			var node = get_node(np)
 			node.visible = true

@@ -43,10 +43,10 @@ custom_fonts/font = SubResource( 1 )
 text = "Wrong!"
 
 [node name="btnExit" type="TextureButton" parent="."]
-margin_left = 778.333
-margin_top = 108.333
-margin_right = 1178.34
-margin_bottom = 508.333
+margin_left = 781.667
+margin_top = 113.333
+margin_right = 1127.67
+margin_bottom = 462.933
 rect_scale = Vector2( 0.135, 0.126 )
 texture_normal = ExtResource( 3 )
 expand = true
